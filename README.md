@@ -13,3 +13,8 @@ npm run dev
 
 # then, open chrome browser, in chrome extension, load dist folder.
 ```
+
+## core javascript codes
+```
+document.getElementsByTagName('video')[0].setAttribute('loop', '1'); document.getElementsByTagName('video')[0].play(); document.getElementsByClassName('write-comment-camppro')[0]?.remove()
+```
