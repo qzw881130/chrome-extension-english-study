@@ -5,7 +5,9 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
-      popup: './src/popup.jsx'
+      popup: './src/popup.jsx',
+      background: './src/background/index.jsx',
+      content: './src/content/index.jsx'
     },
   output: {
     filename: '[name].js',
@@ -19,7 +21,10 @@ module.exports = {
     new CopyPlugin({
         patterns: [
         { from: "public" },
-        { from: "scripts" },
+        // { from: "scripts" },
+        {
+          from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
+        }
         ],
     }), 
   ],
@@ -31,7 +36,7 @@ module.exports = {
         use: {
             loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env', '@babel/preset-react']
+                presets: ['@babel/preset-env', ['@babel/preset-react', {"runtime": "automatic"}]]
             }
         },
       },

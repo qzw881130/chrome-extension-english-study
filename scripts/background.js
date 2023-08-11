@@ -1,3 +1,4 @@
+
 chrome.runtime.onMessage.addListener(data => {
     // console.log('data', data);
     // if (data.type === 'notification') {
@@ -11,3 +12,5 @@ chrome.runtime.onMessage.addListener(data => {
     //     }
     // }
 });
+
+
