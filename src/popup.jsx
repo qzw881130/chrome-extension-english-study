@@ -7,25 +7,21 @@ import {Mode} from "./Mode";
 const Popup = () => {
 
     const CoverLetters = [
-        `document.getElementsByTagName('video')[0].setAttribute('loop', '1');
-        document.getElementsByTagName('video')[0].play();
-        document.getElementsByClassName('write-comment-camppro')[0]?.remove()`,
+        `pls click "Play Next Video" Button to switch to next video`,
+        `Shift + p`
     ];
 
 
     return (
-        <div className="container">
-            {/* <h2>Tips </h2> */}
-            {/* <ul className="tips">
+        <div className="container" style={{    fontWeight: 700, display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center"}}>
+            <h2>Tips </h2>
+            <ul className="tips">
                 {CoverLetters.map((item)=> {
                     return <li key={item}>{item}</li>
                 })}
-            </ul> */}
-            {/* <p><img src='./images/icon-128.png' /></p> */}
+            </ul>
+            {/* <p><img src='./images/icon-128.png' style={{objectFit: "cover"}} /></p> */}
 
-            <Mode />
-            
-            <Counter />
             
         </div>
     );

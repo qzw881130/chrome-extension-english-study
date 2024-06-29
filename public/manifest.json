@@ -1,6 +1,6 @@
 {
     "name": "english-study",
-    "version": "1.0",
+    "version": "2.0.3",
     "description": "english-study",
     "manifest_version": 3,
     "icons": {
@@ -27,15 +27,16 @@
       "resources": [
         "/images/icon-16.png"
       ],
-      "matches": ["https://*.xiaoeknow.com/*"]
+      "matches": ["https://*.xiaoe-tech.com/*"]
     }],
     "content_scripts": [
       {
-        "matches": ["https://*.xiaoeknow.com/*"],
+        "matches": ["https://*.xiaoe-tech.com/*"],
         "js": [
           "browser-polyfill.js",
           "content.js"
-        ]
+        ],
+        "run_at": "document_end"
       }
     ]
   }

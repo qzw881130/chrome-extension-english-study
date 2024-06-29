@@ -21,7 +21,6 @@ module.exports = {
     new CopyPlugin({
         patterns: [
         { from: "public" },
-        // { from: "scripts" },
         {
           from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
         }
