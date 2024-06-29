@@ -14,7 +14,7 @@ const playNextVideo = ()=>{
            let btn = document.createElement('Button');
            btn.setAttribute('id', 'play-next-video')
            btn.setAttribute('style', `font-size:20pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; margin-top: 25px`);
-           btn.innerHTML = 'Play Next Video[shift+p]';
+           btn.innerHTML = 'Play Next [shift+p]';
            btn.addEventListener('click', async ()=>{
                 console.log('hi, click')
                 await _playNextVideo();
