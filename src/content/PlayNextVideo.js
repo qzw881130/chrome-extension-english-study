@@ -20,6 +20,37 @@ const playNextVideo = ()=>{
             const video = document.getElementsByTagName('video')[0];
             return video?.playbackRate || 'undefined';
         }
+
+        const getFriendTime = (timestamp) => {
+            // 创建 Date 对象
+            const date = new Date(timestamp);
+            
+            // 提取年、月、日、小时、分钟、秒
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1; // 月份从0开始，需要加1
+            const day = date.getDate();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            
+            // 格式化为两位数
+            const formattedMonth = month < 10 ? '0' + month : month;
+            const formattedDay = day < 10 ? '0' + day : day;
+            const formattedHours = hours < 10 ? '0' + hours : hours;
+            const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+            const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            // 组合为友好的日期时间格式
+            const friendlyDateTime = `${formattedMonth}/${formattedDay} ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+            
+            // console.log('友好显示的日期时间：', friendlyDateTime);
+            return friendlyDateTime;
+        }
+
+        const clearCache = () => {
+            localStorage.removeItem('block-list');
+            localStorage.removeItem('block-list-last-update-at');
+        }
     
        const addBtn = ()=>{
            const floatElem = document.createElement('div');
@@ -45,7 +76,7 @@ const playNextVideo = ()=>{
             rates.map(rate => {
                 const rateBtn = document.createElement('Button');
                 rateBtn.setAttribute('id', `play-next-video-${rate}`);
-                rateBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; margin-top: 25px; cursor: pointer`);
+                rateBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
                 rateBtn.innerHTML = `${rate}x`;
                 rateBtn.addEventListener('click', () => {
                     setPlaybackRate(rate);
@@ -59,6 +90,19 @@ const playNextVideo = ()=>{
             p2Elem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
             p2Elem.innerHTML = `Current Rate: ${getPlaybackRate()}x`;
             floatElem.appendChild(p2Elem)
+
+            const p3Elem = document.createElement('p');
+            let lastUpdateAt = parseFloat(localStorage.getItem('block-list-last-update-at')) || 0;
+            p2Elem.innerHTML = `catch last updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
+            floatElem.appendChild(p3Elem);
+
+            const clearCacheBtn = document.createElement('Button');
+            clearCacheBtn.setAttribute('id', 'clear-cache')
+            clearCacheBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
+            clearCacheBtn.innerHTML = 'Flush Blocks Cache';
+            clearCacheBtn.addEventListener('click', clearCache)
+            floatElem.appendChild(clearCacheBtn);
+            
        }
 
        const bindShortcut = ()=>{
