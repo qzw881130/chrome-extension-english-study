@@ -10,9 +10,10 @@ const playNextVideo = ()=>{
        }
 
         const setPlaybackRate = (rate) => {
-            const video = document.getElementsByTagName('video')[0];
-            video.playbackRate = rate;
-            console.log(`Playback rate set to ${rate}x`);
+            const rateMap = {'0.5': 6, '0.75': 5, '1': 4};
+            if(!rateMap[rate]) return;
+            const idx = rateMap[rate];
+            document.getElementsByClassName('xgplayer-playbackrate')[0].querySelectorAll('li')[idx].click()
         }
 
         const getPlaybackRate = () => {
@@ -32,7 +33,7 @@ const playNextVideo = ()=>{
             })
             document.getElementsByClassName('shop-information')[0].appendChild(btn);
 
-            const rates = [0.5, 0.75, 1];
+            const rates = ['0.5', '0.75', '1'];
             const pElem = document.createElement('p');
             pElem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
             rates.map(rate => {
