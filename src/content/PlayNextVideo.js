@@ -8,19 +8,50 @@ const playNextVideo = ()=>{
           if(!document.getElementsByClassName('sort_text')[0].innerText.includes('正序')) document.getElementsByClassName('sort_text')[0].click();
           document.getElementsByClassName('sort_box')[0].remove()
        }
+
+        const setPlaybackRate = (rate) => {
+            const video = document.getElementsByTagName('video')[0];
+            video.playbackRate = rate;
+            console.log(`Playback rate set to ${rate}x`);
+        }
+
+        const getPlaybackRate = () => {
+            const video = document.getElementsByTagName('video')[0];
+            return video?.playbackRate || 'undefined';
+        }
     
        const addBtn = ()=>{
            document.getElementsByClassName('shop-information')[0].innerHTML='';
            let btn = document.createElement('Button');
            btn.setAttribute('id', 'play-next-video')
-           btn.setAttribute('style', `font-size:20pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; margin-top: 25px`);
+           btn.setAttribute('style', `font-size:20pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; margin-top: 25px; cursor: pointer`);
            btn.innerHTML = 'Play Next [shift+p]';
            btn.addEventListener('click', async ()=>{
                 console.log('hi, click')
                 await _playNextVideo();
             })
-    
-           document.getElementsByClassName('shop-information')[0].appendChild(btn);
+            document.getElementsByClassName('shop-information')[0].appendChild(btn);
+
+            const rates = [0.5, 0.75, 1];
+            const pElem = document.createElement('p');
+            pElem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
+            rates.map(rate => {
+                const rateBtn = document.createElement('Button');
+                rateBtn.setAttribute('id', `play-next-video-${rate}`);
+                rateBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; margin-top: 25px; cursor: pointer`);
+                rateBtn.innerHTML = `${rate}x`;
+                rateBtn.addEventListener('click', () => {
+                    setPlaybackRate(rate);
+                    document.getElementById('current-play-rate').innerText = `Current Rate: ${getPlaybackRate()}x`;
+                })
+                pElem.appendChild(rateBtn);
+            })
+            document.getElementsByClassName('shop-information')[0].appendChild(pElem);
+            const p2Elem = document.createElement('p');
+            p2Elem.setAttribute('id', 'current-play-rate')
+            p2Elem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
+            p2Elem.innerHTML = `Current Rate: ${getPlaybackRate()}x`;
+            document.getElementsByClassName('shop-information')[0].appendChild(p2Elem)
        }
 
        const bindShortcut = ()=>{
