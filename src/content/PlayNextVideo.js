@@ -99,7 +99,7 @@ const playNextVideo = ()=>{
             const clearCacheBtn = document.createElement('Button');
             clearCacheBtn.setAttribute('id', 'clear-cache')
             clearCacheBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
-            clearCacheBtn.innerHTML = 'Flush Blocks Cache';
+            clearCacheBtn.innerHTML = 'Flush Cache';
             clearCacheBtn.addEventListener('click', clearCache)
             floatElem.appendChild(clearCacheBtn);
             
