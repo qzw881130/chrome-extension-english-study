@@ -210,6 +210,8 @@ const playNextVideo = ()=>{
                     const url = `/p/t_pc/course_pc_detail/video/${next.chapter_id}?product_id=${next.course_id}`
                     console.log('new block ->url===', url)
                     window.location.href = url;
+                }else{
+                    alert('This is the last video in this course');
                 }
             }        
         }
