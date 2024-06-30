@@ -93,7 +93,7 @@ const playNextVideo = ()=>{
 
             const p3Elem = document.createElement('p');
             let lastUpdateAt = parseFloat(localStorage.getItem('block-list-last-update-at')) || 0;
-            p2Elem.innerHTML = `catch last updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
+            p2Elem.innerHTML = `Cache last updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
             floatElem.appendChild(p3Elem);
 
             const clearCacheBtn = document.createElement('Button');
