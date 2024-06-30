@@ -170,7 +170,7 @@ const playNextVideo = ()=>{
     
             
             let blockList = localStorage.getItem('block-list');
-            let lastUpdateAt = localStorage.getItem('block-list-last-update-at');
+            let lastUpdateAt = parseFloat(localStorage.getItem('block-list-last-update-at'));
             if(!blockList || !lastUpdateAt || lastUpdateAt + 1000*20*60 < Date.now()){
                 blockList = await getBlockList(app_id);
                 localStorage.setItem('block-list', JSON.stringify(blockList));
