@@ -32,7 +32,7 @@ window.onload = ()=>{
     
     }
     
-    setTimeout(checkLoad, 1000);
+    setTimeout(checkLoad, 2000);
 
     
 }

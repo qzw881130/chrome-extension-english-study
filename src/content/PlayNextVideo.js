@@ -22,16 +22,22 @@ const playNextVideo = ()=>{
         }
     
        const addBtn = ()=>{
-           document.getElementsByClassName('shop-information')[0].innerHTML='';
+           const floatElem = document.createElement('div');
+           const target = document.getElementsByClassName('shop_msg')[0]
+           const otop = target.offsetTop;
+           const oright = target.offsetLeft + parseInt(window.getComputedStyle(target).width) + 10;
+           floatElem.setAttribute('style', `border-radius: 5px; position: absolute; top: ${otop}px; left: ${oright}px; background-color: #fff; z-index:99999; padding: 10px;`)
+           document.body.appendChild(floatElem);
+
            let btn = document.createElement('Button');
            btn.setAttribute('id', 'play-next-video')
-           btn.setAttribute('style', `font-size:20pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; margin-top: 25px; cursor: pointer`);
+           btn.setAttribute('style', `font-size:20pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
            btn.innerHTML = 'Play Next [shift+p]';
            btn.addEventListener('click', async ()=>{
                 console.log('hi, click')
                 await _playNextVideo();
             })
-            document.getElementsByClassName('shop-information')[0].appendChild(btn);
+            floatElem.appendChild(btn);
 
             const rates = ['0.5', '0.75', '1'];
             const pElem = document.createElement('p');
@@ -47,12 +53,12 @@ const playNextVideo = ()=>{
                 })
                 pElem.appendChild(rateBtn);
             })
-            document.getElementsByClassName('shop-information')[0].appendChild(pElem);
+            floatElem.appendChild(pElem);
             const p2Elem = document.createElement('p');
             p2Elem.setAttribute('id', 'current-play-rate')
             p2Elem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
             p2Elem.innerHTML = `Current Rate: ${getPlaybackRate()}x`;
-            document.getElementsByClassName('shop-information')[0].appendChild(p2Elem)
+            floatElem.appendChild(p2Elem)
        }
 
        const bindShortcut = ()=>{
