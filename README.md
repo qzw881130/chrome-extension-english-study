@@ -18,3 +18,6 @@ npm run dev
 ```
 document.getElementsByTagName('video')[0].setAttribute('loop', '1'); document.getElementsByTagName('video')[0].play(); document.getElementsByClassName('write-comment-camppro')[0]?.remove()
 ```
+
+## Reference Link
+[【有道云笔记】小鹅通切换下一个视频谷歌浏览器插件 version2](https://note.youdao.com/s/T7iRlY4i)
