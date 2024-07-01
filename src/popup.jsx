@@ -7,7 +7,7 @@ import {Mode} from "./Mode";
 const Popup = () => {
 
     const CoverLetters = [
-        `pls click "Play Next Video" Button to switch to next video`,
+        `pls click "Play Next" Button to switch to next video`,
         `Shift + p`
     ];
 

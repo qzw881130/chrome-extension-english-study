@@ -61,6 +61,7 @@ const playNextVideo = ()=>{
     
        const addBtn = ()=>{
            const floatElem = document.createElement('div');
+           floatElem.setAttribute('id', 'float-elem')
            const target = document.getElementsByClassName('shop_msg')[0]
            const otop = target.offsetTop;
         //    const oright = target.offsetLeft + parseInt(window.getComputedStyle(target).width) - 50;
@@ -125,8 +126,15 @@ const playNextVideo = ()=>{
             
             p4Elem.appendChild(checkElem)
             p4Elem.appendChild(document.createTextNode('Auto Full Screen'));
-
             floatElem.appendChild(p4Elem);
+            //close btn
+            const spanElem = document.createElement('span');
+            spanElem.innerHTML = '&times;';
+            spanElem.setAttribute('style', `font-size:20pt; color: gray; cursor: pointer; position: absolute; top: -9px; right: 5px;`);
+            spanElem.addEventListener('click', ()=>{
+                document.getElementById('float-elem').remove();
+            })
+            floatElem.appendChild(spanElem);
             
        }
 
