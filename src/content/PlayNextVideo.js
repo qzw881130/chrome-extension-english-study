@@ -51,12 +51,20 @@ const playNextVideo = ()=>{
             localStorage.removeItem('block-list');
             localStorage.removeItem('block-list-last-update-at');
         }
+
+        const setFullScreenState = () => {
+            localStorage.setItem('full-screen', true);
+        }
+        const getFullScreenState = () => {
+            return !!localStorage.getItem('full-screen');
+        }
     
        const addBtn = ()=>{
            const floatElem = document.createElement('div');
            const target = document.getElementsByClassName('shop_msg')[0]
            const otop = target.offsetTop;
-           const oright = target.offsetLeft + parseInt(window.getComputedStyle(target).width) + 10;
+        //    const oright = target.offsetLeft + parseInt(window.getComputedStyle(target).width) - 50;
+            const oright = target.offsetLeft
            floatElem.setAttribute('style', `border-radius: 5px; position: absolute; top: ${otop}px; left: ${oright}px; background-color: #fff; z-index:99999; padding: 10px;`)
            document.body.appendChild(floatElem);
 
@@ -102,6 +110,23 @@ const playNextVideo = ()=>{
             clearCacheBtn.innerHTML = 'Flush Cache';
             clearCacheBtn.addEventListener('click', clearCache)
             floatElem.appendChild(clearCacheBtn);
+
+            const p4Elem = document.createElement('p');
+            const checkElem = document.createElement('input');
+            checkElem.setAttribute('type', 'checkbox');
+            checkElem.setAttribute('id', 'auto-full-screen');
+            if(getFullScreenState()) checkElem.setAttribute('checked', 'checked');
+            checkElem.addEventListener('change', (e)=>{
+                console.log('auto-full-screen e.target.checked==', e.target.checked)
+                setFullScreenState(e.target.checked);
+                handleFullscreen();
+            })
+
+            
+            p4Elem.appendChild(checkElem)
+            p4Elem.appendChild(document.createTextNode('Auto Full Screen'));
+
+            floatElem.appendChild(p4Elem);
             
        }
 
@@ -113,6 +138,10 @@ const playNextVideo = ()=>{
                    _playNextVideo();
                }
            })
+       }
+
+       const handleFullscreen = () => {
+            document.getElementsByClassName('xgplayer-cssfullscreen')[0].click()
        }
     
         const getBlockList = async (app_id)=>{
@@ -219,6 +248,7 @@ const playNextVideo = ()=>{
         keepSort();
         addBtn();
         bindShortcut();
+        if(getFullScreenState()) handleFullscreen();
         
     }catch(e){
         console.warn('play next-video error===', e);
