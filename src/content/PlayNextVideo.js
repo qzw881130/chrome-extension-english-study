@@ -64,9 +64,8 @@ const playNextVideo = ()=>{
            floatElem.setAttribute('id', 'float-elem')
            const target = document.getElementsByClassName('shop_msg')[0]
            const otop = target.offsetTop;
-        //    const oright = target.offsetLeft + parseInt(window.getComputedStyle(target).width) - 50;
-            const oright = target.offsetLeft
-           floatElem.setAttribute('style', `border-radius: 5px; position: absolute; top: ${otop}px; left: ${oright}px; background-color: #fff; z-index:99999; padding: 10px;`)
+           const oright = target.offsetLeft
+           floatElem.setAttribute('style', `border-radius: 5px; position: absolute; top: ${otop}px; left: ${oright}px; background-color: #fff; z-index:99999; padding: 10px; border: 1px darkgrey solid;`)
            document.body.appendChild(floatElem);
 
            let btn = document.createElement('Button');
@@ -87,23 +86,27 @@ const playNextVideo = ()=>{
                 rateBtn.setAttribute('id', `play-next-video-${rate}`);
                 rateBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
                 rateBtn.innerHTML = `${rate}x`;
+                if(rate == getPlaybackRate()){
+                    rateBtn.style.backgroundColor = '#ffff00';
+                    rateBtn.style.color = '#000';
+                }
                 rateBtn.addEventListener('click', () => {
                     setPlaybackRate(rate);
-                    document.getElementById('current-play-rate').innerText = `Current Rate: ${getPlaybackRate()}x`;
+                    rates.map(r => {
+                        if(r !== rate){
+                            document.getElementById(`play-next-video-${r}`).style.backgroundColor = '#000';
+                            document.getElementById(`play-next-video-${r}`).style.color = '#ffff00';
+                        }else{
+                            document.getElementById(`play-next-video-${r}`).style.backgroundColor = '#ffff00';
+                            document.getElementById(`play-next-video-${r}`).style.color = '#000';
+                        }
+                        
+
+                    })
                 })
                 pElem.appendChild(rateBtn);
             })
             floatElem.appendChild(pElem);
-            const p2Elem = document.createElement('p');
-            p2Elem.setAttribute('id', 'current-play-rate')
-            p2Elem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
-            p2Elem.innerHTML = `Current Rate: ${getPlaybackRate()}x`;
-            floatElem.appendChild(p2Elem)
-
-            const p3Elem = document.createElement('p');
-            let lastUpdateAt = parseFloat(localStorage.getItem('block-list-last-update-at')) || 0;
-            p2Elem.innerHTML = `Last cache updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
-            floatElem.appendChild(p3Elem);
 
             const clearCacheBtn = document.createElement('Button');
             clearCacheBtn.setAttribute('id', 'clear-cache')
@@ -112,8 +115,16 @@ const playNextVideo = ()=>{
             clearCacheBtn.addEventListener('click', clearCache)
             floatElem.appendChild(clearCacheBtn);
 
+            const p3Elem = document.createElement('p');
+            let lastUpdateAt = parseFloat(localStorage.getItem('block-list-last-update-at')) || 0;
+            p3Elem.style = `margin: 0px;`;
+            p3Elem.innerHTML = `Last cache updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
+            floatElem.appendChild(p3Elem);
+
+
             const p4Elem = document.createElement('p');
             const checkElem = document.createElement('input');
+            p4Elem.style = `margin: 5px 0px 0px 0px;`
             checkElem.setAttribute('type', 'checkbox');
             checkElem.setAttribute('id', 'auto-full-screen');
             if(getFullScreenState()) checkElem.setAttribute('checked', 'checked');
