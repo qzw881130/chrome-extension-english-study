@@ -58,6 +58,18 @@ const playNextVideo = ()=>{
         const getFullScreenState = () => {
             return !!localStorage.getItem('full-screen');
         }
+
+        const setRateBtnState = ()=>{
+            setTimeout(()=>{
+                const rate = getPlaybackRate();
+                console.log('rate=====', rate)
+                const rateBtn = document.getElementById(`play-next-video-${rate}`);
+                if(rateBtn){
+                    rateBtn.style.backgroundColor = '#ffff00';
+                    rateBtn.style.color = '#000';
+                }                
+            }, 1000);
+        }
     
        const addBtn = ()=>{
            const floatElem = document.createElement('div');
@@ -86,10 +98,6 @@ const playNextVideo = ()=>{
                 rateBtn.setAttribute('id', `play-next-video-${rate}`);
                 rateBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
                 rateBtn.innerHTML = `${rate}x`;
-                if(rate == getPlaybackRate()){
-                    rateBtn.style.backgroundColor = '#ffff00';
-                    rateBtn.style.color = '#000';
-                }
                 rateBtn.addEventListener('click', () => {
                     setPlaybackRate(rate);
                     rates.map(r => {
@@ -268,6 +276,7 @@ const playNextVideo = ()=>{
         addBtn();
         bindShortcut();
         if(getFullScreenState()) handleFullscreen();
+        setRateBtnState();
         
     }catch(e){
         console.warn('play next-video error===', e);
