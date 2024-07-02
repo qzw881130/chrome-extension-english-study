@@ -9,10 +9,12 @@
 ## Development
 ```
 npm run dev
-
-# then, open chrome browser, in chrome extension, load dist folder.
 ```
 
+## Release
+```
+npm run zip
+```
 
 ## Installation
 [【有道云笔记】小鹅通切换下一个视频谷歌浏览器插件 version2](https://note.youdao.com/s/T7iRlY4i)
