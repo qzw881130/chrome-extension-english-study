@@ -27,11 +27,11 @@ export const clearCache = () => {
     localStorage.removeItem('block-list-last-update-at');
 }
 
-export const setFullScreenState = () => {
-    localStorage.setItem('full-screen', true);
+export const setFullScreenState = (state) => {
+    localStorage.setItem('full-screen', state);
 }
 export const getFullScreenState = () => {
-    return !!localStorage.getItem('full-screen');
+    return localStorage.getItem('full-screen') === 'true';
 }
 
 export const setRateBtnState = ()=>{

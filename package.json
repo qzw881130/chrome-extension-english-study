@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
-  
+    "build": "webpack --config webpack.prod.js",
+    "crx": "crx3 ./dist -o ./english-study.crx --key ./dist.pem",
+    "zip": "zip -r ./english-study.zip ./dist"
   },
   "keywords": [],
   "author": "",
