@@ -11,11 +11,17 @@
 h2{
     margin: 5px 0;
 }
+.tips{
+    margin-top: 10px;
+    border: 1px solid rgb(131, 255, 127);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: '#000'
+}
 .tips li{
-    font-size: 24pt;
-    color: rgb(131, 255, 127);
+    font-size: 16pt;
+    color: '#000';
     padding: 4px;
-    background-color: black;
-    margin: 1px;
-    list-style: none;
+    margin-left: 10px;
+    /* list-style-type: disc; */
 }

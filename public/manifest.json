@@ -12,13 +12,7 @@
     "action": {
         "default_popup": "popup.html"
     },
-    "permissions": [
-        "activeTab",
-        "scripting",
-        "alarms",
-        "storage", 
-        "tabs"
-    ],
+    "permissions": [],
     "background": {
       "service_worker": "background.js",
       "type": "module"
@@ -27,11 +21,11 @@
       "resources": [
         "/images/icon-16.png"
       ],
-      "matches": ["https://*.xiaoe-tech.com/*"]
+      "matches": ["https://*.pc.xiaoe-tech.com/*"]
     }],
     "content_scripts": [
       {
-        "matches": ["https://*.xiaoe-tech.com/*"],
+        "matches": ["https://*.pc.xiaoe-tech.com/*"],
         "js": [
           "browser-polyfill.js",
           "content.js"

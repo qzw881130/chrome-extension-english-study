@@ -13,14 +13,14 @@ const Popup = () => {
 
 
     return (
-        <div className="container" style={{    fontWeight: 700, display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center"}}>
+        <div className="container" style={{    fontWeight: 700, display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center", borderRadius: '2px'}}>
             <h2>Tips </h2>
+            <p style={{ fontSize: "24px", color: "#000", height: '36px', background: 'yellow', width: '100%', padding: '5px'}}>The extension just works in pc.xiaoe-tech.com</p>
             <ul className="tips">
                 {CoverLetters.map((item)=> {
                     return <li key={item}>{item}</li>
                 })}
             </ul>
-            {/* <p><img src='./images/icon-128.png' style={{objectFit: "cover"}} /></p> */}
 
             
         </div>
