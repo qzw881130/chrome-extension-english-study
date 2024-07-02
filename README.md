@@ -1,4 +1,4 @@
-# Build a Chrome Extension With React & Webpack
+# 小鹅通pc学习插件
 
 ## Demonstrate
 ![demo](./img/demo1.png)
