@@ -14,7 +14,7 @@ const createFloatElem = () => {
 const createPlayNextVideoBtn = () => {
     const btn = document.createElement('Button');
     btn.setAttribute('id', 'play-next-video')
-    btn.setAttribute('style', `font-size:20pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
+    btn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
     btn.innerHTML = 'Play Next [shift+p]';
     btn.addEventListener('click', async ()=>{
          console.log('hi, click')
@@ -26,7 +26,7 @@ const createPlayNextVideoBtn = () => {
 const createPlayRateBtn = () => {
     const rates = ['0.5', '0.75', '1'];
     const pElem = document.createElement('p');
-    pElem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; `);
+    pElem.setAttribute('style', `display:flex; flex-direction: row; gap:5px; margin: 8px 0px; `);
     rates.map(rate => {
         const rateBtn = document.createElement('Button');
         rateBtn.setAttribute('id', `play-next-video-${rate}`);
@@ -90,11 +90,26 @@ const createAutoFullScreenBtn = () => {
 const createCloseBtn = () => {
     const spanElem = document.createElement('span');
     spanElem.innerHTML = '&times;';
-    spanElem.setAttribute('style', `font-size:20pt; color: gray; cursor: pointer; position: absolute; top: -9px; right: 5px;`);
+    spanElem.setAttribute('style', `font-size:14pt; color: gray; cursor: pointer; position: absolute; top: -9px; right: 5px;`);
     spanElem.addEventListener('click', ()=>{
         document.getElementById('float-elem').remove();
     })
     return spanElem;
+}
+
+const createVersion = () => {
+    console.log('create version', chrome)
+    const aElem = document.createElement('a');
+    aElem.setAttribute('href', `https://note.youdao.com/ynoteshare/index.html?id=ed33f18348fc140d0d918e3b1528f371&type=note&_time=1719708900636`);
+    aElem.setAttribute('target', '_blank');
+    aElem.setAttribute('style', `font-size:12pt; cursor: pointer; position: absolute; right: 9px; bottom: 5px;`);
+    aElem.setAttribute('id', 'version');
+
+    chrome.runtime.sendMessage({action: 'getVersion'}, response => {
+        console.log('Extension Version:', response.version);
+        document.getElementById('version').innerText = `v${response.version}`;
+    });
+    return aElem;
 }
 
 export const Panel = ()=>{
@@ -126,4 +141,6 @@ export const Panel = ()=>{
     const spanElem = createCloseBtn();
      floatElem.appendChild(spanElem);
      
+    const aElem = createVersion();
+    floatElem.appendChild(aElem);
 }

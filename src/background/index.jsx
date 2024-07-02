@@ -13,22 +13,16 @@ async function incrementStoredValue(tabId) {
   }
 
 export async function init() {
-    await storage.local.clear()
+    // await storage.local.clear()
 	// the message receiver
-    runtime.onMessage.addListener(async (message) => {
-        console.log('message:', message)
-        if (message.to === 'background') {
-            console.log('background handled: ', message.action)
 
-            const tab = await getCurrentTab()
-            const tabId = tab.id
-            console.log('tabId: ', tabId);
-
-            if (tabId) {
-                return incrementStoredValue(tabId.toString())
-            }
+    runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message.action === 'getVersion') {
+            var manifest = chrome.runtime.getManifest();
+            var version = manifest.version;
+            sendResponse({version: version});
         }
-    })
+    });
 
     
 }
