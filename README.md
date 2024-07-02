@@ -3,6 +3,8 @@
 ## Demonstrate
 ![demo](./public/images/demo1.png)
 
+![demo2](./public/images/demo_800x600.jpeg)
+
 
 ## Development
 ```
