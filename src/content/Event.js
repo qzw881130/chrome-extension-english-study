@@ -35,17 +35,22 @@ export const getFullScreenState = () => {
 }
 
 export const setRateBtnState = ()=>{
-    setTimeout(()=>{
-        const rate = getPlaybackRate();
-        console.log('rate=====', rate)
-        const rateBtn = document.getElementById(`play-next-video-${rate}`);
-        if(rateBtn){
-            rateBtn.style.backgroundColor = '#ffff00';
-            rateBtn.style.color = '#000';
-        }                
-    }, 1000);
+    const rate = getPlaybackRate();
+    console.log('rate=====', rate)
+    const rateBtn = document.getElementById(`play-next-video-${rate}`);
+    if(rateBtn){
+        rateBtn.style.backgroundColor = '#ffff00';
+        rateBtn.style.color = '#000';
+    }        
 }
 
+export const checkVideoPlayState = (cb) => {
+    const video = document.getElementsByTagName('video')[0];
+    video.addEventListener('play', ()=>{
+        console.log('video rate=', video.playbackRate)
+        cb();
+    })
+}
 
 export const bindShortcut = ()=>{
     document.addEventListener('keydown', (e)=>{

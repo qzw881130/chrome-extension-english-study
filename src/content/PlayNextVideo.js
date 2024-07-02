@@ -1,4 +1,4 @@
-import { _playNextVideo, bindShortcut, getFullScreenState, handleFullscreen, keepSort, setRateBtnState, switchMenu } from "./Event";
+import { _playNextVideo, bindShortcut, getFullScreenState, handleFullscreen, keepSort, setRateBtnState, switchMenu, checkVideoPlayState } from "./Event";
 import { Panel } from "./Panel";
 
 const playNextVideo = ()=>{
@@ -8,7 +8,8 @@ const playNextVideo = ()=>{
         Panel();
         bindShortcut();
         if(getFullScreenState()) handleFullscreen();
-        setRateBtnState();
+        // setRateBtnState();
+        checkVideoPlayState(setRateBtnState);
     }catch(e){
         console.warn('play next-video error===', e);
     }    
