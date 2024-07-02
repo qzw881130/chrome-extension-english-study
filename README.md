@@ -1,9 +1,9 @@
 # Build a Chrome Extension With React & Webpack
 
 ## Demonstrate
-![demo](./public/images/demo1.png)
+![demo](./img/demo1.png)
 
-![demo2](./public/images/demo_800x600.jpeg)
+![demo2](./img/demo_800x600.jpeg)
 
 
 ## Development
