@@ -105,10 +105,13 @@ const createVersion = () => {
     aElem.setAttribute('style', `font-size:12pt; cursor: pointer; position: absolute; right: 9px; bottom: 5px;`);
     aElem.setAttribute('id', 'version');
 
-    chrome.runtime.sendMessage({action: 'getVersion'}, response => {
-        console.log('Extension Version:', response.version);
-        document.getElementById('version').innerText = `v${response.version}`;
-    });
+    setTimeout(()=>{
+        chrome.runtime.sendMessage({action: 'getVersion'}, response => {
+            console.log('Extension Version:', response.version);
+            document.getElementById('version').innerText = `v${response.version}`;
+        });        
+    }, 3000);
+
     return aElem;
 }
 
