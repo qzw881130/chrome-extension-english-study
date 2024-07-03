@@ -24,3 +24,16 @@ export const getFriendTime = (timestamp) => {
     // console.log('友好显示的日期时间：', friendlyDateTime);
     return friendlyDateTime;
 }
+
+export const getBrowser = () => {
+    if (typeof browser !== 'undefined') {
+      // Firefox 或者其他支持 WebExtension API 的浏览器
+      return 'firefox';
+    } else if (typeof chrome !== 'undefined') {
+      // Chrome 或者其他基于 Chromium 的浏览器
+      return 'chrome';
+    } else {
+      // 不支持的浏览器
+      return 'unknown';
+    }
+  }

@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
+const browser = process.env.Broswer || 'chrome';
+const outputDir = browser === 'chrome' ? 'dist' : 'dist-firefox';
 
 module.exports = {
   entry: {
@@ -11,7 +13,7 @@ module.exports = {
     },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, outputDir),
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -20,7 +22,8 @@ module.exports = {
     }),
     new CopyPlugin({
         patterns: [
-        { from: "public" },
+        { from: `public/manifest-${browser}.json`, to: 'manifest.json' },
+        { from: 'public/images' },
         {
           from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
         }

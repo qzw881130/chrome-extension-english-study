@@ -8,12 +8,20 @@
 
 ## Development
 ```
+#open two terminal windows, then run the following commands separately
 npm run dev
+npm run dev-firefox
 ```
 
-## Release
+## Release chrome
 ```
+npm run build
 npm run zip
+```
+
+## Release firefox
+```
+npm run build-firefox
 ```
 
 ## Installation

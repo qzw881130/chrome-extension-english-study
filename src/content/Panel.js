@@ -1,4 +1,4 @@
-import { getFriendTime } from "./Util";
+import { getBrowser, getFriendTime } from "./Util";
 import { _playNextVideo, clearCache, getFullScreenState, handleFullscreen, setFullScreenState, setPlaybackRate} from "./Event";
 
 const createFloatElem = () => {
@@ -90,7 +90,8 @@ const createAutoFullScreenBtn = () => {
 const createCloseBtn = () => {
     const spanElem = document.createElement('span');
     spanElem.innerHTML = '&times;';
-    spanElem.setAttribute('style', `font-size:14pt; color: gray; cursor: pointer; position: absolute; top: -6px; right: 5px;`);
+    const topv = getBrowser() == 'chrome' ? '-6' : '2';
+    spanElem.setAttribute('style', `font-size:14pt; color: gray; cursor: pointer; position: absolute; top: ${topv}px; right: 5px;`);
     spanElem.addEventListener('click', ()=>{
         document.getElementById('float-elem').remove();
     })
