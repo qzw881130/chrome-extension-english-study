@@ -6,3 +6,4 @@ dist.crx
 dist/*
 *.zip
 /dist-firefox
+web-ext-artifacts

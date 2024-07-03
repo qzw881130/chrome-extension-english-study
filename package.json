@@ -8,8 +8,8 @@
     "dev-firefox": "Broswer=firefox webpack --watch --config webpack.dev.js",
     "build": "Broswer=chrome webpack --config webpack.prod.js",
     "build-firefox": "Broswer=firefox webpack --config webpack.prod.js",
-    "crx": "crx3 ./dist -o ./english-study.crx --key ./dist.pem",
-    "zip": "rm -rf ./english-study.zip && zip -r ./english-study.zip ./dist"
+    "zip": "rm -rf ./english-study.zip && zip -r ./english-study.zip ./dist",
+    "zip-firefox": "web-ext build  -s dist-firefox   --overwrite-dest"
   },
   "keywords": [],
   "author": "",
