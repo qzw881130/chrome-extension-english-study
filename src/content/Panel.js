@@ -110,7 +110,7 @@ const createVersion = () => {
             console.log('Extension Version:', response.version);
             document.getElementById('version').innerText = `v${response.version}`;
         });        
-    }, 500);
+    }, 2000);
 
     return aElem;
 }
