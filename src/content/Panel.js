@@ -106,12 +106,17 @@ const createVersion = () => {
     aElem.setAttribute('id', 'version');
     aElem.innerText = 'check version';
 
-    setTimeout(()=>{
+    var timer = setInterval(()=>{
         chrome.runtime.sendMessage({action: 'getVersion'}, response => {
-            console.log('Extension Version:', response.version);
-            document.getElementById('version').innerText = `v${response.version}`;
+            try{
+                console.log('Extension Version:', response.version);
+                document.getElementById('version').innerText = `v${response.version}`;
+                clearInterval(timer);
+            }catch(e){
+                console.log('getVersion error', e);
+            }
         });        
-    }, 3000);
+    }, 1000);
 
     return aElem;
 }
