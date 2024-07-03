@@ -5,3 +5,5 @@ dist.pem
 dist.crx
 dist/*
 *.zip
+dist-firefox
+dist-firefox/*

@@ -23,7 +23,7 @@ module.exports = {
     new CopyPlugin({
         patterns: [
         { from: `public/manifest-${browser}.json`, to: 'manifest.json' },
-        { from: 'public/images' },
+        { from: 'public/images', to: 'images' },
         {
           from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
         }
