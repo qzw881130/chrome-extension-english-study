@@ -16,13 +16,13 @@ export async function init() {
     // await storage.local.clear()
 	// the message receiver
 
-    runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message.action === 'getVersion') {
-            var manifest = chrome.runtime.getManifest();
-            var version = manifest.version;
-            sendResponse({version: version});
-        }
-    });
+    // runtime.onMessage.addListener((message, sender, sendResponse) => {
+    //     if (message.action === 'getVersion') {
+    //         var manifest = chrome.runtime.getManifest();
+    //         var version = manifest.version;
+    //         sendResponse({version: version});
+    //     }
+    // });
 
     
 }

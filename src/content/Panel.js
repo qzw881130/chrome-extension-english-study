@@ -98,7 +98,7 @@ const createCloseBtn = () => {
 }
 
 const createVersion = () => {
-    console.log('create version', chrome)
+    console.log('create version', chrome.runtime.getManifest()?.version)
     const aElem = document.createElement('a');
     aElem.setAttribute('href', `https://note.youdao.com/ynoteshare/index.html?id=ed33f18348fc140d0d918e3b1528f371&type=note&_time=1719708900636`);
     aElem.setAttribute('target', '_blank');
@@ -107,15 +107,13 @@ const createVersion = () => {
     aElem.innerText = 'check version';
 
     var timer = setInterval(()=>{
-        chrome.runtime.sendMessage({action: 'getVersion'}, response => {
-            try{
-                console.log('Extension Version:', response.version);
-                document.getElementById('version').innerText = `v${response.version}`;
-                clearInterval(timer);
-            }catch(e){
-                console.log('getVersion error', e);
-            }
-        });        
+        try{
+            const version = chrome.runtime.getManifest()?.version
+            document.getElementById('version').innerText = `v${version}`;
+            clearInterval(timer);
+        }catch(e){
+            console.log('getVersion error', e);
+        }      
     }, 1000);
 
     return aElem;
