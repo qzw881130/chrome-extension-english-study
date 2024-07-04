@@ -6,22 +6,26 @@
 ![demo2](./img/demo_800x600.jpeg)
 
 
-## Development
+## Chrome Development
 ```
-#open two terminal windows, then run the following commands separately
 npm run dev
-npm run dev-firefox
 ```
 
-## Release chrome
+## Chrome Release
 ```
 npm run build
 npm run zip
 ```
 
-## Release firefox
+## FireFox Development
+```
+npm run dev-firefox
+```
+
+## FireFox Release
 ```
 npm run build-firefox
+npm run zip-firefox
 ```
 
 ## Installation
