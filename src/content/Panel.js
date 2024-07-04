@@ -15,7 +15,7 @@ const createPlayNextVideoBtn = () => {
     const btn = document.createElement('Button');
     btn.setAttribute('id', 'play-next-video')
     btn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
-    btn.innerHTML = 'Play Next [shift+p]';
+    btn.textContent = 'Play Next [shift+p]';
     btn.addEventListener('click', async ()=>{
          console.log('hi, click')
          await _playNextVideo();
@@ -31,7 +31,7 @@ const createPlayRateBtn = () => {
         const rateBtn = document.createElement('Button');
         rateBtn.setAttribute('id', `play-next-video-${rate}`);
         rateBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
-        rateBtn.innerHTML = `${rate}x`;
+        rateBtn.textContent = `${rate}x`;
         rateBtn.addEventListener('click', () => {
             setPlaybackRate(rate);
             rates.map(r => {
@@ -55,7 +55,7 @@ const createClearCacheBtn = () => {
     const clearCacheBtn = document.createElement('Button');
     clearCacheBtn.setAttribute('id', 'clear-cache')
     clearCacheBtn.setAttribute('style', `font-size:16pt; padding: 5px; color: #ffff00; background-color: #000; border-radius: 5px; cursor: pointer`);
-    clearCacheBtn.innerHTML = 'Flush Cache';
+    clearCacheBtn.textContent = 'Flush Cache';
     clearCacheBtn.addEventListener('click', clearCache)
     return clearCacheBtn;
 }
@@ -64,7 +64,7 @@ const createCacheTip = () => {
     const p3Elem = document.createElement('p');
     let lastUpdateAt = parseFloat(localStorage.getItem('block-list-last-update-at')) || 0;
     p3Elem.style = `margin: 0px;`;
-    p3Elem.innerHTML = `Last cache updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
+    p3Elem.textContent = `Last cache updated at: ${lastUpdateAt ? getFriendTime(lastUpdateAt) : '-'}`;
     return p3Elem;
 }
 
@@ -89,7 +89,7 @@ const createAutoFullScreenBtn = () => {
 
 const createCloseBtn = () => {
     const spanElem = document.createElement('span');
-    spanElem.innerHTML = '&times;';
+    spanElem.textContent = '&times;';
     const topv = getBrowser() == 'chrome' ? '-6' : '2';
     spanElem.setAttribute('style', `font-size:14pt; color: gray; cursor: pointer; position: absolute; top: ${topv}px; right: 5px;`);
     spanElem.addEventListener('click', ()=>{

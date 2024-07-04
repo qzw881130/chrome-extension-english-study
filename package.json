@@ -9,7 +9,8 @@
     "build": "Broswer=chrome webpack --config webpack.prod.js",
     "build-firefox": "Broswer=firefox webpack --config webpack.prod.js",
     "zip": "rm -rf ./english-study.zip && zip -r ./english-study.zip ./dist",
-    "zip-firefox": "web-ext build  -s dist-firefox   --overwrite-dest"
+    "zip-firefox": "web-ext build  -s dist-firefox   --overwrite-dest",
+    "firefox-linter": "addons-linter ./dist-firefox"
   },
   "keywords": [],
   "author": "",

@@ -22,8 +22,8 @@ module.exports = {
     }),
     new CopyPlugin({
         patterns: [
-        { from: `public/manifest-${browser}.json`, to: 'manifest.json' },
-        { from: 'public/images', to: 'images' },
+        { from: `public/manifest-${browser}.json`, to: 'manifest.json', },
+        { from: 'public/images', to: 'images', globOptions: {ignore: ['**/.DS_Store']} },
         {
           from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
         }
