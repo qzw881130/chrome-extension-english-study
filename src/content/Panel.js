@@ -89,7 +89,7 @@ const createAutoFullScreenBtn = () => {
 
 const createCloseBtn = () => {
     const spanElem = document.createElement('span');
-    spanElem.textContent = '&times;';
+    spanElem.textContent = 'X';
     const topv = getBrowser() == 'chrome' ? '-6' : '2';
     spanElem.setAttribute('style', `font-size:14pt; color: gray; cursor: pointer; position: absolute; top: ${topv}px; right: 5px;`);
     spanElem.addEventListener('click', ()=>{
