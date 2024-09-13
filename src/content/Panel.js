@@ -7,7 +7,8 @@ const createFloatElem = () => {
     const target = document.getElementsByClassName('shop_msg')[0]
     const otop = target.offsetTop;
     const oright = target.offsetLeft
-    floatElem.setAttribute('style', `border-radius: 5px; position: absolute; top: ${otop}px; left: ${oright}px; background-color: #fff; z-index:99999; padding: 10px; border: 1px darkgrey solid;`)
+    const width = target.clientWidth;
+    floatElem.setAttribute('style', `border-radius: 5px; position: absolute; width: ${width}px; top: ${otop}px; left: ${oright}px; background-color: #fff; z-index:99999; padding: 10px; border: 1px darkgrey solid;`)
     return floatElem;
 }
 
@@ -120,6 +121,20 @@ const createVersion = () => {
     return aElem;
 }
 
+const createBlockStats = () => {
+    let blockList = localStorage.getItem('block-list');
+    blockList = JSON.parse(blockList);
+    const bNum = blockList?.length || 0;
+    console.log('bNum====', bNum);
+    if(!bNum) return null;
+
+    const pElem = document.createElement('p');
+    pElem.style = `margin: 0px;`;
+
+    pElem.textContent = `Total Block: ${bNum}`;
+    return pElem;
+}
+
 export const Panel = ()=>{
     //panel
     const floatElem = createFloatElem();
@@ -141,9 +156,14 @@ export const Panel = ()=>{
     const p3Elem = createCacheTip();
     floatElem.appendChild(p3Elem);
 
+
+    const pbElem = createBlockStats();
+    floatElem.appendChild(pbElem);
+
     //auto full screen
     const p4Elem = createAutoFullScreenBtn();
     floatElem.appendChild(p4Elem);
+
 
      //close btn
     const spanElem = createCloseBtn();
@@ -151,4 +171,5 @@ export const Panel = ()=>{
      
     const aElem = createVersion();
     floatElem.appendChild(aElem);
+
 }

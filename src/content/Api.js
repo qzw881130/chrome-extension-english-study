@@ -1,5 +1,5 @@
 
-export const getBlockList = async (app_id)=>{
+export const getBlockList = async (app_id, course_id)=>{
     const resp = await fetch("/xe.course.business.avoidlogin.e_course.resource_catalog_list.get/1.0.0", {
       "headers": {
         "accept": "application/json, text/plain, */*",
@@ -7,7 +7,7 @@ export const getBlockList = async (app_id)=>{
         "content-type": "application/x-www-form-urlencoded"
       },
     
-      "body": `app_id=${app_id}&course_id=course_2bc618KiM2ikYueyikGr1ZE5XOA&order=desc&p_id=0&page=1&page_size=500&resource_id=`,
+      "body": `app_id=${app_id}&course_id=${course_id}&order=desc&p_id=0&page=1&page_size=500&resource_id=`,
       "method": "POST"
     });
     const res = await resp.json();
