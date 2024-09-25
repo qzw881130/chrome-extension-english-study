@@ -10,7 +10,7 @@ export const keepSort = ()=>{
 }
 
 export const setPlaybackRate = (rate) => {
-    const rateMap = {'0.5': 6, '0.75': 5, '1': 4};
+    const rateMap = {'0.5': 8, '0.75': 7, '1': 6};
     if(!rateMap[rate]) return;
     const idx = rateMap[rate];
     document.getElementsByClassName('xgplayer-playbackrate')[0].querySelectorAll('li')[idx].click()
